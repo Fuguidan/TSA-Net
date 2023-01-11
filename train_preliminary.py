@@ -3,7 +3,7 @@ import torch
 from torch.utils.data import Dataset
 import torch.optim as optim
 from torch.autograd import Variable
-from TSANet import TemporalSpectralAttnNet as mymodel
+from model.TSANet import TemporalSpectralAttnNet as mymodel
 from utils import *
 from utils import LoadDataset, load_folds_data
 import time
@@ -66,7 +66,6 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=str, default="./output78-20fold2/")
     args = parser.parse_args()
 
-    log_step_interval = 100
     fold_data = load_folds_data(args.np_data_dir, args.fold_num)
     for fold in range(args.fold_num):
         train_file, val_file = fold_data.get_file(fold)
